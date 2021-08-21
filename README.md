@@ -13,7 +13,7 @@ pm2 set innova-pm2-discord:discord_url https://discord_url
 ```
 
 #### `discord_url`
-A url do Discord, é necessário configurar um webhook. Mais detalhes aqui: https://support.discordapp.com/hc/en-us/articles/228383668-Intro-to-Webhooks
+Para obter a url do Discord, é necessário configurar um webhook. Mais detalhes aqui: https://support.discordapp.com/hc/en-us/articles/228383668-Intro-to-Webhooks
 
 ## Configuração
 
