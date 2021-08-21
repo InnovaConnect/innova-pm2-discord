@@ -1,22 +1,23 @@
-# pm2-discord
+# kfg-pm2-discord
 
-This is a PM2 Module for sending events & logs from your PM2 processes to Discord.
+Módulo do PM2 para mandar eventos e logs do PM2 para o Discord. É um fork do repositório https://github.com/FranciscoG/pm2-discord com algumas melhorias implementadas pela KFG.
 
-## Install
+## Instalação
 
-To install and setup pm2-discord, run the following commands:
+Para instalar e configurar, deve ser feito o clone desse repositório na máquina em que se deseja monitorar o pm2, em seguida executar comandos:
 
 ```
-pm2 install pm2-discord
-pm2 set pm2-discord:discord_url https://discord_url
+cd kfg-pm2-discord
+pm2 install .
+pm2 set kfg-pm2-discord:discord_url https://discord_url
 ```
 
 #### `discord_url`
-To get the Discord URL, you need to setup a Webhook. More details on how to set this up can be found here: https://support.discordapp.com/hc/en-us/articles/228383668-Intro-to-Webhooks
+A url do Discord, é necessário configurar um webhook. Mais detalhes aqui: https://support.discordapp.com/hc/en-us/articles/228383668-Intro-to-Webhooks
 
 ## Configure
 
-The following events can be subscribed to:
+Os seguintes eventos podem ser ativados/desativados:
 
 - **log** - All standard out logs from your processes. `Default: true`
 - **error** - All error logs from your processes. `Default: false`
@@ -30,38 +31,30 @@ The following events can be subscribed to:
 - **start** -  Event fired when a process is started. `Default: false`
 - **online** - Event fired when a process is online. `Default: false`
 
-You can simply turn these on and off by setting them to true or false using the PM2 set command.
+É possível alterar os parâmetros utilizando o comando PM2 set.
 
 ```
-pm2 set pm2-discord:log true
-pm2 set pm2-discord:error false
+pm2 set kfg-pm2-discord:log true
+pm2 set kfg-pm2-discord:error false
 ...
 ```
 
-## Options
+## Opções
 
-The following options are available:
+As seguintes opções estão disponíveis:
 
 - **process_name** (string) When this is set, it will only output the logs of a specific named process `Default: NULL`
 - **buffer** (bool) - Enable/Disable buffering of messages by timestamp. Messages that occur with the same timestamp (seconds) will be concatenated together and posted as a single discord message. `Default: true`
 - **buffer_seconds** (int) - Duration in seconds to aggregate messages. Has no effect if buffer is set to false.  `Min: 1, Max: 5, Default: 1`
 - **queue_max** (int) - Number of messages to keep queued before the queue will be truncated. When the queue exceeds this maximum, a rate limit message will be posted to discord. `Min: 10, Max: 100, Default: 100`
 
-Set these options in the same way you subscribe to events.
+Essas opções são configuradas utilizando o comando PM2 set.
 
-Example: The following configuration options will enable message buffering, and set the buffer duration to 2 seconds.  All messages that occur within 2 seconds of each other (for the same event) will be concatenated into a single discord message.
+Exemplo: A seguinte configuração irá habilitar o buffering de mensagens, e setar o buffer para 2 segundos.  Todas as mensagens que ocorrerem dentro de 2 segundos entre uma e outra (no mesmo tipo de evento) serão concatenadas em uma mesma mensagem no discord.
 
 ```
-pm2 set pm2-discord:process_name myprocess
-pm2 set pm2-discord:buffer true
-pm2 set pm2-discord:buffer_seconds 2
-pm2 set pm2-discord:queue_max 50
+pm2 set kfg-pm2-discord:process_name myprocess
+pm2 set kfg-pm2-discord:buffer true
+pm2 set kfg-pm2-discord:buffer_seconds 2
+pm2 set kfg-pm2-discord:queue_max 50
 ```
-
-## Contributing
-
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code.
-
-## Acknowledgements
-
-Forked from [mattpker/pm2-slack](https://github.com/mattpker/pm2-slack) and converted to use with Discord. Thanks for the doing all the heavy lifting Matt :stuck_out_tongue_winking_eye:
