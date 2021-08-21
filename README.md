@@ -1,21 +1,21 @@
-# kfg-pm2-discord
+# innova-pm2-discord
 
-Módulo do PM2 para mandar eventos e logs do PM2 para o Discord. É um fork do repositório https://github.com/FranciscoG/pm2-discord com algumas melhorias implementadas pela KFG.
+Módulo do PM2 para mandar eventos e logs do PM2 para o Discord. É um fork do repositório https://github.com/FranciscoG/pm2-discord com algumas melhorias implementadas pela Innova.
 
 ## Instalação
 
 Para instalar e configurar, deve ser feito o clone desse repositório na máquina em que se deseja monitorar o pm2, em seguida executar comandos:
 
 ```
-cd kfg-pm2-discord
+cd innova-pm2-discord
 pm2 install .
-pm2 set kfg-pm2-discord:discord_url https://discord_url
+pm2 set innova-pm2-discord:discord_url https://discord_url
 ```
 
 #### `discord_url`
 A url do Discord, é necessário configurar um webhook. Mais detalhes aqui: https://support.discordapp.com/hc/en-us/articles/228383668-Intro-to-Webhooks
 
-## Configure
+## Configuração
 
 Os seguintes eventos podem ser ativados/desativados:
 
@@ -34,8 +34,8 @@ Os seguintes eventos podem ser ativados/desativados:
 É possível alterar os parâmetros utilizando o comando PM2 set.
 
 ```
-pm2 set kfg-pm2-discord:log true
-pm2 set kfg-pm2-discord:error false
+pm2 set innova-pm2-discord:log true
+pm2 set innova-pm2-discord:error false
 ...
 ```
 
@@ -53,8 +53,8 @@ Essas opções são configuradas utilizando o comando PM2 set.
 Exemplo: A seguinte configuração irá habilitar o buffering de mensagens, e setar o buffer para 2 segundos.  Todas as mensagens que ocorrerem dentro de 2 segundos entre uma e outra (no mesmo tipo de evento) serão concatenadas em uma mesma mensagem no discord.
 
 ```
-pm2 set kfg-pm2-discord:process_name myprocess
-pm2 set kfg-pm2-discord:buffer true
-pm2 set kfg-pm2-discord:buffer_seconds 2
-pm2 set kfg-pm2-discord:queue_max 50
+pm2 set innova-pm2-discord:process_name myprocess
+pm2 set innova-pm2-discord:buffer true
+pm2 set innova-pm2-discord:buffer_seconds 2
+pm2 set innova-pm2-discord:queue_max 50
 ```
