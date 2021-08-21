@@ -19,8 +19,8 @@ A url do Discord, é necessário configurar um webhook. Mais detalhes aqui: http
 
 Os seguintes eventos podem ser ativados/desativados:
 
-- **log** - All standard out logs from your processes. `Default: true`
-- **error** - All error logs from your processes. `Default: false`
+- **log** - All standard out logs from your processes. `Default: false`
+- **error** - All error logs from your processes. `Default: true`
 - **kill** - Event fired when PM2 is killed. `Default: true`
 - **exception** - Any exceptions from your processes. `Default: true`
 - **restart** - Event fired when a process is restarted. `Default: false`
