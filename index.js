@@ -3,6 +3,7 @@ var pm2 = require('pm2');
 var pmx = require('pmx');
 var request = require('request');
 var stripAnsi = require('strip-ansi');
+var os = require('os');
 
 // Get the configuration from PM2
 var conf = pmx.initModule();
@@ -26,7 +27,6 @@ var suppressed = {
 
 // Function to send event to Discord's Incoming Webhook
 function sendToDiscord(message) {
-
   var description = message.description;
 
   // If a Discord URL is not set, we do not want to continue and nofify the user that it needs to be set
@@ -39,6 +39,25 @@ function sendToDiscord(message) {
     "content" : description
   };
 
+   if (['log', 'error'].includes(message.event)){
+     const serverName = os.hostname();
+
+      payload = {
+        embeds: [
+          {
+            title: `${serverName} - ${message.name} - ${message.event}`,
+            color: '15158332',
+            fields: [
+              {
+                name: 'Mensagem',
+                value: '```' + message.description + '```',
+              },
+            ],
+          },
+        ]
+      };
+  }
+  
   // Options for the post request
   var options = {
     method: 'post',
