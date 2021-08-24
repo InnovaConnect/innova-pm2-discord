@@ -1,5 +1,5 @@
 {
-  "name": "pm2-discord",
+  "name": "innova-pm2-discord",
   "version": "0.1.2",
   "description": "A PM2 module to emit events to discord",
   "main": "index.js",
@@ -34,8 +34,8 @@
   "config": {
     "discord_url": null,
     "process_name": null,
-    "log": true,
-    "error": false,
+    "log": false,
+    "error": true,
     "kill": true,
     "exception": true,
     "restart": false,
